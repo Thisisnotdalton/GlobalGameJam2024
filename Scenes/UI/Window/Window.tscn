@@ -1,0 +1,164 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/UI/Window.cs" type="Script" id=1]
+[ext_resource path="res://Assets/UI/WindowHeaderBar.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/UI/Window.tres" type="Theme" id=3]
+[ext_resource path="res://Scripts/UI/WindowButton.cs" type="Script" id=4]
+
+[node name="Window" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1.0
+margin_bottom = 1.0
+script = ExtResource( 1 )
+_transitionTime = 0.125
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Control" parent="VBoxContainer"]
+margin_right = 1023.0
+margin_bottom = 59.0
+rect_clip_content = true
+size_flags_horizontal = 11
+size_flags_vertical = 3
+
+[node name="HeaderBar" type="Panel" parent="VBoxContainer/Header"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
+margin_right = 1013.0
+margin_bottom = 49.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+margin_right = 807.0
+margin_bottom = 49.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 12.0
+
+[node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 15
+size_flags_vertical = 15
+theme = ExtResource( 2 )
+text = "Window Title"
+valign = 1
+clip_text = true
+
+[node name="Buttons" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+margin_left = 811.0
+margin_right = 1013.0
+margin_bottom = 49.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MinButton" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 49.0
+rect_clip_content = true
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MinButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+_changeToState = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MinButton/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "-"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="MaxButton" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer"]
+margin_left = 68.0
+margin_right = 133.0
+margin_bottom = 49.0
+rect_clip_content = true
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MaxButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+_changeToState = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MaxButton/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "[]"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="CloseButton" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer"]
+margin_left = 137.0
+margin_right = 202.0
+margin_bottom = 49.0
+rect_clip_content = true
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/CloseButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/CloseButton/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "X"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Body" type="Control" parent="VBoxContainer"]
+margin_top = 63.0
+margin_right = 1023.0
+margin_bottom = 601.0
+rect_clip_content = true
+size_flags_horizontal = 9
+size_flags_vertical = 3
+size_flags_stretch_ratio = 9.0
+
+[node name="Background" type="Panel" parent="VBoxContainer/Body"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="VBoxContainer/Body"]
+anchor_right = 1.0
+anchor_bottom = 1.0
