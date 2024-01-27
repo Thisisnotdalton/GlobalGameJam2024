@@ -1,0 +1,26 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Core/ExclusiveStateNodeManager.cs" type="Script" id=1]
+[ext_resource path="res://Assets/StateIdentifiers/PauseMenuState.tres" type="Resource" id=2]
+[ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=3]
+[ext_resource path="res://Scenes/UI/PauseMenu/PauseUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/UI/PauseUI.cs" type="Script" id=5]
+[ext_resource path="res://Assets/StateIdentifiers/GameState.tres" type="Resource" id=6]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=7]
+
+[node name="PauseMenu" type="Node"]
+script = ExtResource( 5 )
+_quitGameStateIdentifiers = [ ExtResource( 3 ) ]
+_pauseMenuStateIdentifier = ExtResource( 2 )
+_closePauseMenuStateIdentifier = ExtResource( 6 )
+
+[node name="PauseMenuPanels" type="Node" parent="."]
+script = ExtResource( 1 )
+_defaultState = ExtResource( 6 )
+_externalStateIdentifiers = [ ExtResource( 3 ) ]
+
+[node name="PauseUI" parent="PauseMenuPanels" instance=ExtResource( 4 )]
+
+[node name="PauseMenuClosed" type="Node" parent="PauseMenuPanels"]
+script = ExtResource( 7 )
+_stateIdentifier = ExtResource( 6 )

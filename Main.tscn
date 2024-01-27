@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/States/MainMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNodeManager.cs" type="Script" id=2]
+[ext_resource path="res://Scenes/States/Game.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=6]
+[ext_resource path="res://Scenes/States/GameOver.tscn" type="PackedScene" id=8]
+
+[node name="Main" type="Node"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 5, 0 )
+layers = 9
+shadow_enabled = true
+
+[node name="GameStates" type="Node" parent="."]
+script = ExtResource( 2 )
+_defaultState = ExtResource( 6 )
+
+[node name="Game" parent="GameStates" instance=ExtResource( 5 )]
+
+[node name="GameOver" parent="GameStates" instance=ExtResource( 8 )]
+
+[node name="MainMenu" parent="GameStates" instance=ExtResource( 1 )]

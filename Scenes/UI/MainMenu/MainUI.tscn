@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=2]
+[ext_resource path="res://Assets/MainUI.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/StateIdentifiers/SettingsMenuState.tres" type="Resource" id=4]
+[ext_resource path="res://Assets/StateIdentifiers/GameState.tres" type="Resource" id=5]
+[ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/StateIdentifiers/CreditsState.tres" type="Resource" id=7]
+
+[node name="MainUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+_stateIdentifier = ExtResource( 6 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LeftSpacer" type="Control" parent="HBoxContainer"]
+margin_right = 338.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_right = 339.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 183.0
+margin_right = 339.0
+margin_bottom = 417.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="StartButtonMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_right = 339.0
+margin_bottom = 58.0
+custom_constants/margin_bottom = 10
+
+[node name="StartGame" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/StartButtonMargin"]
+margin_right = 339.0
+margin_bottom = 48.0
+theme = ExtResource( 3 )
+text = "Start Game"
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+_targetStateIdentifier = ExtResource( 5 )
+
+[node name="SettingsMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 62.0
+margin_right = 339.0
+margin_bottom = 120.0
+custom_constants/margin_bottom = 10
+
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/SettingsMargin"]
+margin_right = 339.0
+margin_bottom = 48.0
+theme = ExtResource( 3 )
+text = "Settings"
+script = ExtResource( 1 )
+_targetStateIdentifier = ExtResource( 4 )
+
+[node name="CreditsMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 124.0
+margin_right = 339.0
+margin_bottom = 182.0
+custom_constants/margin_bottom = 10
+
+[node name="Credits" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/CreditsMargin"]
+margin_right = 339.0
+margin_bottom = 48.0
+theme = ExtResource( 3 )
+text = "Credits"
+script = ExtResource( 1 )
+_targetStateIdentifier = ExtResource( 7 )
+
+[node name="ExitMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 186.0
+margin_right = 339.0
+margin_bottom = 234.0
+
+[node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/ExitMargin"]
+margin_right = 339.0
+margin_bottom = 48.0
+theme = ExtResource( 3 )
+text = "Exit"
+
+[node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_top = 421.0
+margin_right = 339.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RightSpacer" type="Control" parent="HBoxContainer"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
