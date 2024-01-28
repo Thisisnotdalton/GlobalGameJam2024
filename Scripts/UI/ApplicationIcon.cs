@@ -1,4 +1,5 @@
 using System;
+using GlobalGameJam2024.Scripts.Core;
 using Godot;
 
 namespace GlobalGameJam2024.Scripts.UI
@@ -103,6 +104,10 @@ namespace GlobalGameJam2024.Scripts.UI
             window.SetTitle(applicationData.WindowTitle);
             _taskBarItem = applicationData.TaskBarItemScene.Instance<TaskBarItem>();
             _taskBarItem.BindToWindow(window);
+            if (SearchNodeType.FindChildOfType<TextureRect>(_taskBarItem) is TextureRect textureRect)
+            {
+                textureRect.Texture = AppIcon.Texture;
+            }
         }
 
         public void Select()
