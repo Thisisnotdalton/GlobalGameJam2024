@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scripts/UI/TaskBar.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/UI/WindowContainer.cs" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Assets/ProgramData/Gheemail.tres" type="Resource" id=19]
 [ext_resource path="res://Assets/ProgramData/AmigoSoft.tres" type="Resource" id=20]
 [ext_resource path="res://Assets/ProgramData/SaberNight.tres" type="Resource" id=21]
+[ext_resource path="res://Assets/ProgramData/Gloom.tres" type="Resource" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.62, 0.6076, 0.6076, 1 )
@@ -35,6 +36,7 @@ bg_color = Color( 0.247059, 0.784314, 0.282353, 1 )
 bg_color = Color( 0.00784314, 0.654902, 0.937255, 1 )
 
 [node name="Monitor" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -187,12 +189,13 @@ margin_right = 191.0
 margin_bottom = 231.0
 text = "Steam Willie"
 
-[node name="DesktopIconsSlot5" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="Icon_Gloom_Game" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 390.0
 margin_right = 581.0
 margin_bottom = 291.0
+_applicationData = ExtResource( 22 )
 
 [node name="Icon_Folder_Full_2" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0

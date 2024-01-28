@@ -1,3 +1,4 @@
+using GlobalGameJam2024.Scripts.Core;
 using Godot;
 using System;
 using System.Runtime.CompilerServices;
@@ -14,9 +15,27 @@ public class Player : KinematicBody
 	private AnimationPlayer animPlayer;
 	private RayCast raycast;
 
+	//[Export]
+	//private NodePath _startButton;
+
 	// Called when the node enters the scene tree for the first time.
-	public override async void _Ready()
+	public override void _Ready()
 	{
+		ExclusiveStateNode gameState = SearchNodeType.FindParentOfType<ExclusiveStateNode>(this);
+		gameState.Connect("OnStateChanged", this, "InitializePlayer");
+	}
+	
+	public void InitializePlayer(bool enabled)
+	{
+		if (!enabled)
+		{
+            PauseManager.Instance.PauseGame(false);
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+            return;
+		}
+		if (PauseManager.Instance.Connect("GamePaused", this, "ToggleMouseVisibility") != Error.Ok)
+			throw new Exception("Failed to connect PauseUI to PauseManager signal!");
+
 		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		raycast = GetNode<RayCast>("RayCast");
 
@@ -25,10 +44,21 @@ public class Player : KinematicBody
 		// Equivalent to `yield(get_tree(), "idle_frame")`
 		//GetTree().CreateTimer(0).Connect("timeout", this, nameof(OnIdleFrame));
 
-		await ToSignal(GetTree(), "idle_frame");
-
+		ToSignal(GetTree(), "idle_frame");
 		// Will be called after the idle frame
 		GetTree().CallGroup("zombies", "SetPlayer", this);
+	}
+
+	public void ToggleMouseVisibility(bool isPaused)
+	{
+		if (isPaused)
+		{
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
+		else
+		{
+			Input.MouseMode = Input.MouseModeEnum.Captured;
+		}
 	}
 
 	public override void _Input(InputEvent @event)
@@ -46,6 +76,13 @@ public class Player : KinematicBody
 	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(float delta)
 	{
+		//if (Input.IsActionPressed("ui_cancel"))
+		//{
+		//	GetTree().Paused = true;
+		//	//var pauseUI = GetNode<Control>("PauseUI");
+		//	//pauseUI.Show();
+		//}
+		
 		if (Input.IsActionPressed("exit"))
 		{
 			GetTree().Quit();
@@ -100,6 +137,7 @@ public class Player : KinematicBody
 
 	public void Kill()
 	{
-		GetTree().ReloadCurrentScene();
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        GetTree().ReloadCurrentScene();
 	}
 }

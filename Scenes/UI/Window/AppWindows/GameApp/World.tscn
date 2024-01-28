@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/UI/Window/AppWindows/GameApp/GameAppPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/Window/AppWindows/GameApp/Zombie.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/PauseMenu/PauseMenuRoot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Character/CharacterInput.cs" type="Script" id=4]
+[ext_resource path="res://Scenes/UI/Gloom/Gloom_MainUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/StateIdentifiers/GloomGameState.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/StateIdentifiers/GloomMainMenuState.tres" type="Resource" id=7]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=8]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNodeManager.cs" type="Script" id=9]
+
+[node name="Gloom" type="Spatial"]
+pause_mode = 1
+script = ExtResource( 9 )
+_defaultState = ExtResource( 7 )
+
+[node name="MainMenuState" type="Node" parent="."]
+script = ExtResource( 8 )
+_stateIdentifier = ExtResource( 7 )
+
+[node name="Gloom_MainUI" parent="MainMenuState" instance=ExtResource( 5 )]
+
+[node name="GameState" type="Node" parent="."]
+script = ExtResource( 8 )
+_stateIdentifier = ExtResource( 6 )
+
+[node name="Player" parent="GameState" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="CharacterInput" type="Node" parent="GameState/Player"]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="Zombie2" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.693, 2, -14.0148 )
+
+[node name="Zombie3" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5581, 2, -14.0148 )
+
+[node name="Zombie4" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.693, 2, -14.0148 )
+
+[node name="Zombie5" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.307, 2, -14.0148 )
+
+[node name="Zombie6" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.307, 2, -17.0148 )
+
+[node name="Zombie7" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307, 2, -20.0148 )
+
+[node name="Zombie" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -9.31583 )
+
+[node name="Zombie8" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.693, 2, -26.9151 )
+
+[node name="Zombie9" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5581, 2, -26.9151 )
+
+[node name="Zombie10" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.693, 2, -26.9151 )
+
+[node name="Zombie11" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.307, 2, -26.9151 )
+
+[node name="Zombie12" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.307, 2, -29.915 )
+
+[node name="Zombie13" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307, 2, -32.915 )
+
+[node name="Zombie14" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -22.2161 )
+
+[node name="Zombie15" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.693, 2, -41.9099 )
+
+[node name="Zombie16" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5581, 2, -41.9099 )
+
+[node name="Zombie17" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.693, 2, -41.9099 )
+
+[node name="Zombie18" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.307, 2, -41.9099 )
+
+[node name="Zombie19" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.307, 2, -44.9099 )
+
+[node name="Zombie20" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307, 2, -47.9099 )
+
+[node name="Zombie21" parent="GameState" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -37.211 )
+
+[node name="PauseMenu" parent="GameState" instance=ExtResource( 3 )]
+pause_mode = 2

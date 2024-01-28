@@ -3,9 +3,9 @@
 [ext_resource path="res://Assets/MainUI.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=2]
 [ext_resource path="res://Assets/StateIdentifiers/PauseMenuState.tres" type="Resource" id=3]
-[ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=4]
+[ext_resource path="res://Assets/StateIdentifiers/GloomGameState.tres" type="Resource" id=4]
 [ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=5]
-[ext_resource path="res://Assets/StateIdentifiers/GameState.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/StateIdentifiers/GloomMainMenuState.tres" type="Resource" id=6]
 [ext_resource path="res://Assets/UI_Art/icon_panel_4.png" type="Texture" id=7]
 
 [node name="PauseUI" type="Control"]
@@ -66,7 +66,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
-_targetStateIdentifier = ExtResource( 6 )
+_targetStateIdentifier = ExtResource( 4 )
 
 [node name="SettingsMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 visible = false
@@ -105,7 +105,7 @@ margin_bottom = 43.0
 theme = ExtResource( 1 )
 text = "Exit"
 script = ExtResource( 5 )
-_targetStateIdentifier = ExtResource( 4 )
+_targetStateIdentifier = ExtResource( 6 )
 
 [node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
 margin_top = 722.0
