@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/UI/Window.tres" type="Theme" id=1]
-[ext_resource path="res://Assets/UI/WindowHeaderBar.tres" type="Theme" id=2]
-[ext_resource path="res://Assets/UI_Art/bg_gmail.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/UI/Window.cs" type="Script" id=4]
-[ext_resource path="res://Scripts/UI/WindowButton.cs" type="Script" id=5]
-
-[sub_resource type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/Window.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/UI/WindowButton.cs" type="Script" id=2]
+[ext_resource path="res://Assets/UI/WindowHeaderBar.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/UI/Window.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/UI_Art/bg_cutedocsfolder.png" type="Texture" id=5]
 
 [node name="Window" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 _transitionTime = 0.125
 _windowLabelPath = NodePath("VBoxContainer/Header/MarginContainer/HBoxContainer/Title/Label")
 
@@ -31,7 +29,7 @@ size_flags_vertical = 3
 [node name="HeaderBar" type="Panel" parent="VBoxContainer/Header"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
 anchor_right = 1.0
@@ -63,8 +61,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
-theme = ExtResource( 2 )
-text = "GheeMail"
+theme = ExtResource( 3 )
+text = "My Doc Cute Ments"
 valign = 1
 clip_text = true
 
@@ -85,12 +83,12 @@ margin_right = 188.0
 margin_bottom = 87.0
 rect_clip_content = true
 size_flags_horizontal = 3
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MinButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource( 2 )
 _changeToState = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MinButton/Button"]
@@ -109,12 +107,12 @@ margin_right = 253.0
 margin_bottom = 97.0
 rect_clip_content = true
 size_flags_horizontal = 3
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MaxButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource( 2 )
 _changeToState = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/MaxButton/Button"]
@@ -132,12 +130,12 @@ margin_right = 380.0
 margin_bottom = 87.0
 rect_clip_content = true
 size_flags_horizontal = 3
-theme = ExtResource( 2 )
+theme = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/CloseButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer/CloseButton/Button"]
 anchor_right = 1.0
@@ -160,7 +158,7 @@ size_flags_stretch_ratio = 9.0
 [node name="Background" type="Panel" parent="VBoxContainer/Body"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
+theme = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="VBoxContainer/Body"]
 anchor_right = 1.0
@@ -169,9 +167,6 @@ anchor_bottom = 1.0
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Body/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-size_flags_horizontal = 7
-size_flags_vertical = 7
-theme = SubResource( 1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 4
