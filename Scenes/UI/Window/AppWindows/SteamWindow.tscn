@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/UI/Window.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/UI/WindowHeaderBar.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/UI_Art/bg_steamwillie.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/UI/Window.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/UI/WindowButton.cs" type="Script" id=5]
+[ext_resource path="res://Assets/GameObstacles/ObstacleIDs/DownloadedGame.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/Fonts/lemon_milk/LEMONMILK-Bold.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scripts/GameObstacles/GameObstacleChangeButton.cs" type="Script" id=8]
+[ext_resource path="res://Scripts/GameObstacles/GameObstacleLock.cs" type="Script" id=9]
+[ext_resource path="res://Scripts/GameObstacles/HideParentOnLock.cs" type="Script" id=10]
+[ext_resource path="res://Assets/GameObstacles/ObstacleSets/DownloadedGame.tres" type="Resource" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 7 )
 
 [node name="Window" type="Control"]
 anchor_right = 1.0
@@ -62,7 +72,7 @@ grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 theme = ExtResource( 2 )
-text = "Steam Willie"
+text = "Window Title"
 valign = 1
 clip_text = true
 
@@ -170,3 +180,32 @@ anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 4
+
+[node name="Button" type="Button" parent="VBoxContainer/Body/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -304.0
+margin_top = -100.5
+margin_right = 304.0
+margin_bottom = 101.5
+script = ExtResource( 8 )
+_obstacleId = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Body/Control/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "Download
+"
+align = 1
+valign = 1
+
+[node name="HideAfterDownload" type="Node" parent="VBoxContainer/Body/Control/Button"]
+script = ExtResource( 10 )
+_unlockedNodeParentPath = NodePath("../..")
+
+[node name="Lock" type="Node" parent="VBoxContainer/Body/Control/Button/HideAfterDownload"]
+script = ExtResource( 9 )
+_requiredUnsatisfied = ExtResource( 11 )

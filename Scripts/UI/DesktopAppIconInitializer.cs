@@ -36,7 +36,7 @@ namespace GlobalGameJam2024.Scripts.UI
                     $"{nameof(DesktopAppIconInitializer)} {Name} failed to find {nameof(TaskBar)} node at path {_taskBarPath}");
             }
             foreach (ApplicationIcon applicationIcon in SearchNodeType.FindChildrenOfType<ApplicationIcon>(
-                         _desktopIconContainer.IconContainer))
+                         _desktopIconContainer.IconContainer, -1))
             {
                 applicationIcon.Initialize(_windowContainer, _taskBar, _desktopIconContainer);
             }

@@ -21,6 +21,10 @@
 [ext_resource path="res://Assets/ProgramData/Gheemail.tres" type="Resource" id=19]
 [ext_resource path="res://Assets/ProgramData/AmigoSoft.tres" type="Resource" id=20]
 [ext_resource path="res://Assets/ProgramData/SaberNight.tres" type="Resource" id=21]
+[ext_resource path="res://Assets/GameObstacles/ObstacleSets/DownloadedGame.tres" type="Resource" id=22]
+[ext_resource path="res://Scripts/GameObstacles/SwapProgramOnLock.cs" type="Script" id=23]
+[ext_resource path="res://Scripts/GameObstacles/GameObstacleLock.cs" type="Script" id=24]
+[ext_resource path="res://Assets/ProgramData/None.tres" type="Resource" id=25]
 [ext_resource path="res://Assets/ProgramData/Gloom.tres" type="Resource" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -231,7 +235,7 @@ margin_left = 975.0
 margin_right = 1166.0
 margin_bottom = 291.0
 
-[node name="DesktopIconsSlot11" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1170.0
@@ -300,6 +304,9 @@ margin_right = 386.0
 margin_bottom = 585.0
 _applicationData = ExtResource( 21 )
 
+[node name="Panel" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Game" index="0"]
+visible = true
+
 [node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Game/GridContainer" index="0"]
 margin_right = 191.0
 margin_bottom = 113.0
@@ -313,6 +320,16 @@ text = "Saber:
 Night 
 Symphony"
 autowrap = true
+
+[node name="LockUntilDownloaded" type="Node" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Game"]
+script = ExtResource( 23 )
+_lockedProgramResource = ExtResource( 25 )
+_unlockedProgramResource = ExtResource( 21 )
+_applicationIconPath = NodePath("..")
+
+[node name="Lock" type="Node" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Game/LockUntilDownloaded"]
+script = ExtResource( 24 )
+_requiredSatisfied = ExtResource( 22 )
 
 [node name="DesktopIconsSlot9" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
