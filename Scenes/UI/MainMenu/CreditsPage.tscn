@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Fonts/lemon_milk/LEMONMILK-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/StateIdentifiers/SettingsMenuState.tres" type="Resource" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/MainUI.tres" type="Theme" id=8]
 [ext_resource path="res://Assets/Fonts/lemon_milk/LEMONMILK-Bold.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://Scenes/UI/MainMenu/CPUParticles2D.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/UI/MainMenu/Back.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -161,6 +162,7 @@ margin_right = 956.0
 margin_bottom = 43.0
 theme = ExtResource( 8 )
 text = "Back"
+script = ExtResource( 11 )
 
 [node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
 margin_top = 936.0
