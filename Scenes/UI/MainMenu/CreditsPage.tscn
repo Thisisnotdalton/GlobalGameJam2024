@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Fonts/lemon_milk/LEMONMILK-Regular.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/StateIdentifiers/SettingsMenuState.tres" type="Resource" id=2]
@@ -9,9 +9,10 @@
 [ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=7]
 [ext_resource path="res://Assets/MainUI.tres" type="Theme" id=8]
 [ext_resource path="res://Assets/Fonts/lemon_milk/LEMONMILK-Bold.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scenes/UI/MainMenu/CPUParticles2D.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 80
+size = 70
 outline_size = 1
 outline_color = Color( 0.27451, 0.615686, 1, 1 )
 font_data = ExtResource( 9 )
@@ -27,6 +28,14 @@ margin_left = 4.0
 margin_right = 1924.0
 margin_bottom = 1080.0
 texture = ExtResource( 5 )
+
+[node name="CPUParticles2D" parent="BG" instance=ExtResource( 10 )]
+amount = 300
+emission_shape = 2
+emission_rect_extents = Vector2( 1920, 1080 )
+gravity = Vector2( 0, -100 )
+scale_amount = 5.0
+scale_amount_random = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1920.0
@@ -47,7 +56,7 @@ size_flags_vertical = 3
 
 [node name="TopSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
 margin_right = 956.0
-margin_bottom = 278.0
+margin_bottom = 286.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -62,24 +71,24 @@ expand = true
 stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 282.0
+margin_top = 290.0
 margin_right = 956.0
-margin_bottom = 937.0
+margin_bottom = 932.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 margin_right = 956.0
-margin_bottom = 107.0
+margin_bottom = 94.0
 custom_fonts/font = SubResource( 1 )
 text = "Credits"
 align = 1
 valign = 1
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 111.0
+[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 98.0
 margin_right = 956.0
-margin_bottom = 608.0
+margin_bottom = 595.0
 custom_fonts/font = SubResource( 2 )
 text = "Global Game Jam 2024 - Make Me Laugh
 
@@ -143,9 +152,9 @@ script = ExtResource( 7 )
 _targetStateIdentifier = ExtResource( 3 )
 
 [node name="ExitMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 612.0
+margin_top = 599.0
 margin_right = 956.0
-margin_bottom = 655.0
+margin_bottom = 642.0
 
 [node name="Back" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/ExitMargin"]
 margin_right = 956.0
@@ -154,7 +163,7 @@ theme = ExtResource( 8 )
 text = "Back"
 
 [node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 941.0
+margin_top = 936.0
 margin_right = 956.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
