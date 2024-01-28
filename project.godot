@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SingletonManager="*res://Scripts/Core/SingletonManager.cs"
+GlobalAudioStreamPlayer="*res://Scenes/AudioStreamPlayer.tscn"
 
 [display]
 

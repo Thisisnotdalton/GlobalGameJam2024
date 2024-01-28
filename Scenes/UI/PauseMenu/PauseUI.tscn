@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/MainUI.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=4]
 [ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=5]
 [ext_resource path="res://Assets/StateIdentifiers/GameState.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/UI_Art/icon_panel_4.png" type="Texture" id=7]
 
 [node name="PauseUI" type="Control"]
 pause_mode = 2
@@ -14,44 +15,51 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 _stateIdentifier = ExtResource( 3 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="LeftSpacer" type="Control" parent="HBoxContainer"]
-margin_right = 338.0
-margin_bottom = 600.0
+margin_right = 637.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 342.0
-margin_right = 681.0
-margin_bottom = 600.0
+margin_left = 641.0
+margin_right = 1278.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TopSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_right = 339.0
-margin_bottom = 197.0
+margin_right = 637.0
+margin_bottom = 357.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 201.0
-margin_right = 339.0
-margin_bottom = 398.0
+margin_top = 361.0
+margin_right = 637.0
+margin_bottom = 718.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="ResumeButtonMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 43.0
-margin_right = 339.0
-margin_bottom = 101.0
+margin_top = 128.0
+margin_right = 637.0
+margin_bottom = 181.0
 custom_constants/margin_bottom = 10
 
 [node name="ResumeGame" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/ResumeButtonMargin"]
-margin_right = 339.0
-margin_bottom = 48.0
+margin_right = 637.0
+margin_bottom = 43.0
 theme = ExtResource( 1 )
 text = "Resume Game"
 script = ExtResource( 5 )
@@ -87,27 +95,27 @@ theme = ExtResource( 1 )
 text = "Credits"
 
 [node name="ExitMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 105.0
-margin_right = 339.0
-margin_bottom = 153.0
+margin_top = 185.0
+margin_right = 637.0
+margin_bottom = 228.0
 
 [node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/ExitMargin"]
-margin_right = 339.0
-margin_bottom = 48.0
+margin_right = 637.0
+margin_bottom = 43.0
 theme = ExtResource( 1 )
 text = "Exit"
 script = ExtResource( 5 )
 _targetStateIdentifier = ExtResource( 4 )
 
 [node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_top = 402.0
-margin_right = 339.0
-margin_bottom = 600.0
+margin_top = 722.0
+margin_right = 637.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RightSpacer" type="Control" parent="HBoxContainer"]
-margin_left = 685.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 1282.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
