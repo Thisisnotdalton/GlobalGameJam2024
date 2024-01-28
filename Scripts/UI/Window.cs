@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using GlobalGameJam2024.Scripts.Core;
 using Godot;
 
 namespace GlobalGameJam2024.Scripts.UI
@@ -90,39 +91,29 @@ namespace GlobalGameJam2024.Scripts.UI
             WindowLabel.Text = title;
         }
 
-        private void BindSignal(string signalName, Node listener, string methodName)
-        {
-            if (!IsConnected(signalName, listener, methodName) &&
-                Connect(signalName, listener, methodName) != Error.Ok)
-            {
-                throw new Exception(
-                    $"Failed to bind {signalName} of {nameof(Window)} {Name} to {listener} {listener.Name}!");
-            }
-        }
-
         public void BindStateChanged(Node listener, string methodName)
         {
-            BindSignal(TransitionSignalName, listener, methodName);
+            ConnectSignal.Check(this, TransitionSignalName, listener, methodName);
         }
 
         public void BindOpened(Node listener, string methodName)
         {
-            BindSignal(OpenedSignalName, listener, methodName);
+            ConnectSignal.Check(this, OpenedSignalName, listener, methodName);
         }
 
         public void BindClosed(Node listener, string methodName)
         {
-            BindSignal(ClosedSignalName, listener, methodName);
+            ConnectSignal.Check(this, ClosedSignalName, listener, methodName);
         }
 
         public void BindMinimized(Node listener, string methodName)
         {
-            BindSignal(MinimizedSignalName, listener, methodName);
+            ConnectSignal.Check(this, MinimizedSignalName, listener, methodName);
         }
 
         public void BindMaximized(Node listener, string methodName)
         {
-            BindSignal(MaximizedSignalName, listener, methodName);
+            ConnectSignal.Check(this, MaximizedSignalName, listener, methodName);
         }
 
         public void SetMinimizedControlNode(Control minimizedTarget)

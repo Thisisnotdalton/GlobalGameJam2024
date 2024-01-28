@@ -80,18 +80,21 @@ namespace GlobalGameJam2024.Scripts.UI
             _taskBar = taskBar;
             _windowContainer = windowContainer;
             _applicationIconContainer = applicationIconContainer;
-            InitializeTaskBarItem(_applicationData);
             _applicationIconContainer.AddIcon(this);
+            Initialize(_applicationData);
         }
 
-        private void InitializeTaskBarItem(ProgramResource applicationData)
+        public void Initialize(ProgramResource applicationData)
         {
-            if (_taskBarItem != null)
-            {
-                _taskBarItem.QueueFree();
-            }
+            _applicationData = applicationData;
+            InitializeIcon(applicationData);
+            InitializeTaskBarItem(applicationData);
+        }
 
-            if (applicationData == null || applicationData.ProgramName == null || applicationData.ProgramName.Length == 0)
+        public void InitializeIcon(ProgramResource applicationData)
+        {
+            if (applicationData == null || applicationData.ProgramName == null ||
+                applicationData.ProgramName.Length == 0)
             {
                 AppLabel.Text = "";
                 AppIcon.Texture = null;
@@ -100,6 +103,21 @@ namespace GlobalGameJam2024.Scripts.UI
 
             AppLabel.Text = applicationData.ProgramName;
             AppIcon.Texture = applicationData.Icon;
+        }
+
+        public void InitializeTaskBarItem(ProgramResource applicationData)
+        {
+
+            if (applicationData == null || applicationData.ProgramName == null ||
+                applicationData.ProgramName.Length == 0)
+            {
+                return;
+            }
+            if (_taskBarItem != null)
+            {
+                _taskBarItem.QueueFree();
+            }
+
             Window window = applicationData.WindowScene.Instance<Window>();
             window.SetTitle(applicationData.WindowTitle);
             _taskBarItem = applicationData.TaskBarItemScene.Instance<TaskBarItem>();
@@ -119,6 +137,7 @@ namespace GlobalGameJam2024.Scripts.UI
         {
             SelectedEffect?.Hide();
         }
+
         public Control GetIcon()
         {
             return this;
@@ -126,9 +145,13 @@ namespace GlobalGameJam2024.Scripts.UI
 
         public void Launch()
         {
-            _taskBar.AddTask(_taskBarItem);
-            _windowContainer.AddWindow(_taskBarItem.Window);
-            _taskBarItem.Window.ChangeWindowState(WindowState.Opened);
+            if (_applicationData != null && _applicationData.ProgramName != null &&
+                _applicationData.ProgramName.Length > 0)
+            {
+                _taskBar.AddTask(_taskBarItem);
+                _windowContainer.AddWindow(_taskBarItem.Window);
+                _taskBarItem.Window.ChangeWindowState(WindowState.Opened);
+            }
         }
 
         public override void _Pressed()
