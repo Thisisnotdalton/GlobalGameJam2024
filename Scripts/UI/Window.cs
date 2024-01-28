@@ -3,20 +3,19 @@ using Godot;
 
 namespace GlobalGameJam2024.Scripts.UI
 {
-    public class Window : Control
+    public class Window : Control, IWindow
     {
-        private static readonly Vector4 MinimizedPosition = new Vector4(0,0,0,0);
-        private static readonly Vector4 MaximizedPosition = new Vector4(0,0,1,1);
-        private Vector4 _lastOpenPosition = new Vector4(0,0,1,1);
-        private Vector4 _lastPosition = new Vector4(0,0,1,1);
+        private static readonly Vector4 MinimizedPosition = new Vector4(0, 0, 0, 0);
+        private static readonly Vector4 MaximizedPosition = new Vector4(0, 0, 1, 1);
+        private Vector4 _lastOpenPosition = new Vector4(0, 0, 1, 1);
+        private Vector4 _lastPosition = new Vector4(0, 0, 1, 1);
         private Vector4 _targetPosition = Vector4.Zero;
 
 
-        [Export(PropertyHint.Range, "0,5")]
-        private float _transitionTime = 1;
+        [Export(PropertyHint.Range, "0,5")] private float _transitionTime = 1;
 
         private float _transitionTimeRemaining = 0;
-        
+
         private WindowState _state = WindowState.Opened;
 
         public WindowState State
@@ -39,7 +38,10 @@ namespace GlobalGameJam2024.Scripts.UI
         [Signal]
         public delegate void Maximized(string windowTitle);
 
-        private void ChangeWindowState(WindowState newState)
+        [Signal]
+        public delegate void FinishedTransition(Window window);
+
+        public void ChangeWindowState(WindowState newState)
         {
             ChangeWindowState(newState, _state != newState);
         }
@@ -71,6 +73,7 @@ namespace GlobalGameJam2024.Scripts.UI
 
                 _transitionTimeRemaining = _transitionTime;
             }
+
             GD.Print($"Changing state of {nameof(Window)} {Name} to {newState}");
             _state = newState;
         }
@@ -81,7 +84,11 @@ namespace GlobalGameJam2024.Scripts.UI
             if (_transitionTimeRemaining > 0)
             {
                 _transitionTimeRemaining = Mathf.Max(0, _transitionTimeRemaining - delta);
-                LerpAnchor(_lastPosition, _targetPosition, 1 - (_transitionTimeRemaining/_transitionTime));
+                LerpAnchor(_lastPosition, _targetPosition, 1 - (_transitionTimeRemaining / _transitionTime));
+                if (_transitionTimeRemaining <= 0)
+                {
+                    EmitSignal("FinishedTransition", this);
+                }
             }
         }
 
@@ -93,6 +100,10 @@ namespace GlobalGameJam2024.Scripts.UI
             AnchorRight = newPosition.Z;
             AnchorBottom = newPosition.W;
         }
-        
+
+        public Control GetWindow()
+        {
+            return this;
+        }
     }
 }
