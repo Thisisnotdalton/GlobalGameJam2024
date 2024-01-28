@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=2]
+[ext_resource path="res://Assets/MainUI.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/GameApp/20240127_4 (1).png" type="Texture" id=4]
+[ext_resource path="res://Assets/StateIdentifiers/GloomGameState.tres" type="Resource" id=5]
+[ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=6]
+[ext_resource path="res://Assets/GameApp/icon_Gloom.png" type="Texture" id=7]
+
+[node name="Gloom_MainUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+_stateIdentifier = ExtResource( 6 )
+
+[node name="BG" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_right = 1924.0
+margin_bottom = 1080.0
+texture = ExtResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LeftSpacer" type="Control" parent="HBoxContainer"]
+margin_right = 478.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 482.0
+margin_right = 1438.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_right = 956.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/TopSpacer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 120.0
+margin_bottom = 120.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/TopSpacer/MarginContainer"]
+margin_right = 956.0
+margin_bottom = 536.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 540.0
+margin_right = 956.0
+margin_bottom = 808.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="StartButtonMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 84.0
+margin_right = 956.0
+margin_bottom = 137.0
+custom_constants/margin_bottom = 10
+
+[node name="StartGame" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/StartButtonMargin"]
+margin_right = 956.0
+margin_bottom = 43.0
+theme = ExtResource( 3 )
+text = "Start Game"
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+_targetStateIdentifier = ExtResource( 5 )
+
+[node name="ExitMargin" type="MarginContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 141.0
+margin_right = 956.0
+margin_bottom = 184.0
+
+[node name="Exit" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/ExitMargin"]
+margin_right = 956.0
+margin_bottom = 43.0
+theme = ExtResource( 3 )
+text = "Exit"
+
+[node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_top = 812.0
+margin_right = 956.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RightSpacer" type="Control" parent="HBoxContainer"]
+margin_left = 1442.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
