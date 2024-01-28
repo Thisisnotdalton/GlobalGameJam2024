@@ -6,6 +6,8 @@ namespace GlobalGameJam2024.Scripts.UI
     public class TaskBarItem : Control, ITaskBarItem
     {
         private Window _window = null;
+
+        public Window Window => _window;
         public bool IsSelected { get; private set; }
 
         public Control GetTaskIcon()
@@ -27,13 +29,13 @@ namespace GlobalGameJam2024.Scripts.UI
             }
 
             _window = window;
-            _window.Connect("FinishedTransition", this, "");
+            _window.BindStateChanged(this, "OnWindowStateChanged");
         }
 
         public void Select()
         {
-            _window.State = WindowState.Opened;
             IsSelected = true;
+            _window.State = WindowState.Opened;
         }
 
         public void DeSelect()
