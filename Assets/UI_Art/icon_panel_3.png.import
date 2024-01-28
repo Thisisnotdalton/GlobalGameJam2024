@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_steamwillie.png-c3384874634e9854efac7b4049a28de5.stex"
+path="res://.import/icon_panel_3.png-74067ab283b9e8058f33f97c68049f48.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/icon_steamwillie.png"
-dest_files=[ "res://.import/icon_steamwillie.png-c3384874634e9854efac7b4049a28de5.stex" ]
+source_file="res://Assets/UI_Art/icon_panel_3.png"
+dest_files=[ "res://.import/icon_panel_3.png-74067ab283b9e8058f33f97c68049f48.stex" ]
 
 [params]
 

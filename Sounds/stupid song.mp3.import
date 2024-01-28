@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/stupid song.mp3-97ae8fcec0c6efc911d3d0bd9c6aa8c9.mp3str"
+
+[deps]
+
+source_file="res://Sounds/stupid song.mp3"
+dest_files=[ "res://.import/stupid song.mp3-97ae8fcec0c6efc911d3d0bd9c6aa8c9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

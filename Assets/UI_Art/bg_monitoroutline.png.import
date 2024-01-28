@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_folder_full.png-8f6370513020909a796ff4627bf5cd67.stex"
+path="res://.import/bg_monitoroutline.png-2af9deee292574167a3b52a3cc8aa8f2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/icon_folder_full.png"
-dest_files=[ "res://.import/icon_folder_full.png-8f6370513020909a796ff4627bf5cd67.stex" ]
+source_file="res://Assets/UI_Art/bg_monitoroutline.png"
+dest_files=[ "res://.import/bg_monitoroutline.png-2af9deee292574167a3b52a3cc8aa8f2.stex" ]
 
 [params]
 

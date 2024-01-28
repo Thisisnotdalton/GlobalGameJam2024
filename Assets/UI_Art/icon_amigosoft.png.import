@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon_panel_4.png-bb98e9017e1743c059d1ecb8dffa0c66.stex"
+path="res://.import/icon_amigosoft.png-dd20ed55105e740a7f71e03dad270d35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/icon_panel_4.png"
-dest_files=[ "res://.import/icon_panel_4.png-bb98e9017e1743c059d1ecb8dffa0c66.stex" ]
+source_file="res://Assets/UI_Art/icon_amigosoft.png"
+dest_files=[ "res://.import/icon_amigosoft.png-dd20ed55105e740a7f71e03dad270d35.stex" ]
 
 [params]
 
