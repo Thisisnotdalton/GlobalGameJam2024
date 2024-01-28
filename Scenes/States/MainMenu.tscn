@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/UI/MainMenu/SettingsUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI/MainMenu/MainUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=6]
-[ext_resource path="res://Scenes/States/Credits.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/UI/MainMenu/CreditsPage.tscn" type="PackedScene" id=7]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 6 )
