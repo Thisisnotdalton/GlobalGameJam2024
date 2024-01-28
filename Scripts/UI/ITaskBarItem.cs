@@ -8,5 +8,7 @@ namespace GlobalGameJam2024.Scripts.UI
         void BindToWindow(Window window);
         void Select();
         void DeSelect();
+
+        void BindClosedSignal(Node listener, string methodName);
     }
 }

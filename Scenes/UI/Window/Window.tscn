@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 _transitionTime = 0.125
-_titleLabelPath = NodePath("VBoxContainer/Header/MarginContainer/HBoxContainer/Title/Label")
+_windowLabelPath = NodePath("VBoxContainer/Header/MarginContainer/HBoxContainer/Title/Label")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -33,22 +33,22 @@ theme = ExtResource( 2 )
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
-margin_right = 1910.0
-margin_bottom = 97.0
+margin_right = 1900.0
+margin_bottom = 87.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
-margin_right = 1524.0
-margin_bottom = 97.0
+margin_right = 1516.0
+margin_bottom = 87.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 12.0
@@ -66,9 +66,9 @@ valign = 1
 clip_text = true
 
 [node name="Buttons" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
-margin_left = 1528.0
-margin_right = 1910.0
-margin_bottom = 97.0
+margin_left = 1520.0
+margin_right = 1900.0
+margin_bottom = 87.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -78,8 +78,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="MinButton" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer"]
-margin_right = 124.0
-margin_bottom = 97.0
+margin_right = 188.0
+margin_bottom = 87.0
 rect_clip_content = true
 size_flags_horizontal = 3
 theme = ExtResource( 2 )
@@ -100,6 +100,7 @@ autowrap = true
 clip_text = true
 
 [node name="MaxButton" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer"]
+visible = false
 margin_left = 128.0
 margin_right = 253.0
 margin_bottom = 97.0
@@ -123,9 +124,9 @@ autowrap = true
 clip_text = true
 
 [node name="CloseButton" type="Control" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/Buttons/HBoxContainer"]
-margin_left = 257.0
-margin_right = 382.0
-margin_bottom = 97.0
+margin_left = 192.0
+margin_right = 380.0
+margin_bottom = 87.0
 rect_clip_content = true
 size_flags_horizontal = 3
 theme = ExtResource( 2 )

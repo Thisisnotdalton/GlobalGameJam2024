@@ -8,34 +8,68 @@ namespace GlobalGameJam2024.Scripts.UI
     {
         private static readonly Vector4 MaximizedPosition = new Vector4(0, 0, 1, 1);
         private Control _minimizedPositionNode;
-        private Vector4 _lastOpenPosition = new Vector4(0, 0, 1, 1);
+        private Vector4 _lastOpenPosition = new Vector4(0, 0, 0, 0);
         private Vector4 _lastPosition = new Vector4(0, 0, 1, 1);
         private Vector4 _targetPosition = Vector4.Zero;
         private const string TransitionSignalName = "FinishedTransition";
+
+        [Signal]
+        public delegate void Opened(Window window);
+
+        private const string OpenedSignalName = "Opened";
+
+        [Signal]
+        public delegate void Closed(Window window);
+
+        private const string ClosedSignalName = "Closed";
+
+        [Signal]
+        public delegate void Minimized(Window window);
+
+        private const string MinimizedSignalName = "Minimized";
+
+        [Signal]
+        public delegate void Maximized(Window window);
+
+        private const string MaximizedSignalName = "Maximized";
+
+        [Signal]
+        public delegate void FinishedTransition(Window window);
 
         [Export(PropertyHint.Range, "0,5")] private float _transitionTime = 1;
 
         private float _transitionTimeRemaining = 0;
 
-        private WindowState _state = WindowState.Opened;
-        [Export] private NodePath _titleLabelPath = new NodePath(".");
-        private Label _titleLabel;
+        private WindowState _state = WindowState.Minimized;
+        [Export] private NodePath _windowLabelPath = new NodePath(".");
+        private Label _windowLabel;
+
+        private Label WindowLabel
+        {
+            get
+            {
+                if (_windowLabel == null)
+                {
+                    _windowLabel = GetNode<Label>(_windowLabelPath);
+                    if (_windowLabel == null)
+                    {
+                        throw new Exception(
+                            $"Failed to fetch {nameof(Label)} for window title from node path {_windowLabelPath}!");
+                    }
+                }
+
+                return _windowLabel;
+            }
+        }
 
         private Vector4 GetMinimizedPosition()
         {
-            return new Vector4(_minimizedPositionNode.AnchorLeft, _minimizedPositionNode.AnchorTop,
-                _minimizedPositionNode.AnchorRight, _minimizedPositionNode.AnchorBottom);
+            return new Vector4(0, 1, 0, 1);
         }
 
         public override void _Ready()
         {
             base._Ready();
-            _titleLabel = GetNode<Label>(_titleLabelPath);
-            if (_titleLabel == null)
-            {
-                throw new Exception($"Failed to fetch {nameof(Label)} for window title from node path {_titleLabel}!");
-            }
-
             _lastOpenPosition = new Vector4(AnchorLeft, AnchorTop, AnchorRight, AnchorBottom);
         }
 
@@ -53,16 +87,42 @@ namespace GlobalGameJam2024.Scripts.UI
 
         public void SetTitle(string title)
         {
-            _titleLabel.Text = title;
+            WindowLabel.Text = title;
+        }
+
+        private void BindSignal(string signalName, Node listener, string methodName)
+        {
+            if (!IsConnected(signalName, listener, methodName) &&
+                Connect(signalName, listener, methodName) != Error.Ok)
+            {
+                throw new Exception(
+                    $"Failed to bind {signalName} of {nameof(Window)} {Name} to {listener} {listener.Name}!");
+            }
         }
 
         public void BindStateChanged(Node listener, string methodName)
         {
-            if (Connect(TransitionSignalName, listener, methodName) != Error.Ok)
-            {
-                throw new Exception(
-                    $"Failed to bind {TransitionSignalName} of {nameof(Window)} {Name} to {listener} {listener.Name}!");
-            }
+            BindSignal(TransitionSignalName, listener, methodName);
+        }
+
+        public void BindOpened(Node listener, string methodName)
+        {
+            BindSignal(OpenedSignalName, listener, methodName);
+        }
+
+        public void BindClosed(Node listener, string methodName)
+        {
+            BindSignal(ClosedSignalName, listener, methodName);
+        }
+
+        public void BindMinimized(Node listener, string methodName)
+        {
+            BindSignal(MinimizedSignalName, listener, methodName);
+        }
+
+        public void BindMaximized(Node listener, string methodName)
+        {
+            BindSignal(MaximizedSignalName, listener, methodName);
         }
 
         public void SetMinimizedControlNode(Control minimizedTarget)
@@ -70,22 +130,7 @@ namespace GlobalGameJam2024.Scripts.UI
             _minimizedPositionNode = minimizedTarget;
         }
 
-        public string Title { get; set; }
-
-        [Signal]
-        public delegate void Opened(string windowTitle);
-
-        [Signal]
-        public delegate void Closed(string windowTitle);
-
-        [Signal]
-        public delegate void Minimized(string windowTitle);
-
-        [Signal]
-        public delegate void Maximized(string windowTitle);
-
-        [Signal]
-        public delegate void FinishedTransition(Window window);
+        public string Title => WindowLabel.Text;
 
         public void ChangeWindowState(WindowState newState)
         {
@@ -111,31 +156,34 @@ namespace GlobalGameJam2024.Scripts.UI
                         break;
                 }
 
-                switch (newState)
-                {
-                    case WindowState.Opened:
-                        EmitSignal("Opened", Title);
-                        _targetPosition = _lastOpenPosition;
-                        break;
-                    case WindowState.Closed:
-                        EmitSignal("Closed", Title);
-                        _targetPosition = GetMinimizedPosition();
-                        break;
-                    case WindowState.Minimized:
-                        EmitSignal("Minimized", Title);
-                        _targetPosition = GetMinimizedPosition();
-                        break;
-                    case WindowState.Maximized:
-                        EmitSignal("Maximized", Title);
-                        _targetPosition = MaximizedPosition;
-                        break;
-                }
-
                 _transitionTimeRemaining = _state == newState ? 0 : _transitionTime;
             }
 
             GD.Print($"Changing state of {nameof(Window)} {Name} to {newState}");
             _state = newState;
+
+            if (signalStateChange)
+            {
+                switch (_state)
+                {
+                    case WindowState.Opened:
+                        EmitSignal(OpenedSignalName, this);
+                        _targetPosition = _lastOpenPosition;
+                        break;
+                    case WindowState.Closed:
+                        EmitSignal(ClosedSignalName, this);
+                        _targetPosition = GetMinimizedPosition();
+                        break;
+                    case WindowState.Minimized:
+                        EmitSignal(MinimizedSignalName, this);
+                        _targetPosition = GetMinimizedPosition();
+                        break;
+                    case WindowState.Maximized:
+                        EmitSignal(MaximizedSignalName, this);
+                        _targetPosition = MaximizedPosition;
+                        break;
+                }
+            }
         }
 
         public override void _Process(float delta)

@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://Assets/UI_Art/icon_steamwillie.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI_Art/icon_amigosoft.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/UI/ProgramResource.cs" type="Script" id=2]
 [ext_resource path="res://Scenes/UI/AppWindows/SteamWindow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/UI/TaskBarIcon.tscn" type="PackedScene" id=4]
 
 [resource]
 script = ExtResource( 2 )
-ProgramName = "Steam Willie"
-WindowTitle = "Steam Willie"
+ProgramName = "AMIGOSOFT"
+WindowTitle = "AMIGOSOFT"
 WindowScene = ExtResource( 3 )
 TaskBarItemScene = ExtResource( 4 )
 Icon = ExtResource( 1 )

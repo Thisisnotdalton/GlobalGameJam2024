@@ -8,16 +8,17 @@ namespace GlobalGameJam2024.Scripts.UI
     public class WindowContainer : Control
     {
         [Export] private NodePath _applicationWindowContainerPath = new NodePath(".");
-        private Container _applicationWindowContainer;
+        private Control _applicationWindowContainer;
         private readonly Dictionary<IWindow, IWindow> _windows = new Dictionary<IWindow, IWindow>();
 
         public override void _Ready()
         {
             base._Ready();
-            _applicationWindowContainer = GetNode<Container>(_applicationWindowContainerPath);
+            _applicationWindowContainer = GetNode<Control>(_applicationWindowContainerPath);
             if (_applicationWindowContainer == null)
             {
-                throw new Exception($"Failed to find container for {nameof(WindowContainer)} {Name} at path {_applicationWindowContainerPath}!");
+                throw new Exception(
+                    $"Failed to find container for {nameof(WindowContainer)} {Name} at path {_applicationWindowContainerPath}!");
             }
         }
 
@@ -25,18 +26,32 @@ namespace GlobalGameJam2024.Scripts.UI
         {
             if (_windows.ContainsKey(window))
             {
+                GD.Print($"{nameof(WindowContainer)} {Name} already contains {window}!");
                 return;
             }
 
             _windows[window] = window;
             window.BindStateChanged(this, "OnWindowStateChanged");
+            window.BindOpened(this, "OnWindowStateChanged");
+            window.BindMaximized(this, "OnWindowStateChanged");
+            DisplayWindow(window);
+        }
+
+        private void DisplayWindow(IWindow window)
+        {
+            ReplaceParent.Replace(window.GetWindow(), _applicationWindowContainer);
+        }
+
+        private void HideWindow(IWindow window)
+        {
+            ReplaceParent.Replace(window.GetWindow(), null);
         }
 
         private void RemoveWindow(IWindow window)
         {
             if (_windows.Remove(window))
             {
-                ReplaceParent.Replace(window.GetWindow(), null);
+                HideWindow(window);
                 window.ChangeWindowState(WindowState.Closed);
             }
         }
@@ -48,7 +63,7 @@ namespace GlobalGameJam2024.Scripts.UI
                 return;
             }
 
-            ReplaceParent.Replace(window.GetWindow(), null);
+            HideWindow(window);
         }
 
         private void MaximizeWindow(IWindow window)
@@ -57,22 +72,23 @@ namespace GlobalGameJam2024.Scripts.UI
             {
                 return;
             }
-
-            ReplaceParent.Replace(window.GetWindow(), null);
+            DisplayWindow(window);
         }
 
         private void OpenWindow(IWindow window)
         {
             if (!_windows.ContainsKey(window))
             {
-                return;
+                AddWindow(window);
             }
-
-            ReplaceParent.Replace(window.GetWindow(), _applicationWindowContainer);
+            DisplayWindow(window);
         }
 
-        public void OnWindowStateChanged(IWindow window)
+        public void OnWindowStateChanged(Window window)
         {
+            string windowName = window != null && window.GetWindow() != null ? window.GetWindow().Name : "";
+            GD.Print(
+                $"{nameof(WindowContainer)} {Name} received window state changed event for {nameof(IWindow)} {windowName} with state {window?.GetState()}");
             switch (window.GetState())
             {
                 case WindowState.Closed:

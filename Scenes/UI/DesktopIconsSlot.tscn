@@ -1,6 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Scripts/UI/ProgramResource.cs" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/lemon_milk/LEMONMILK-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/UI/ApplicationIcon.cs" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.733333, 0.607843, 0.607843, 0 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+ProgramName = null
+WindowTitle = null
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0862745, 0.443137, 0.815686, 0.580392 )
@@ -11,12 +21,18 @@ outline_size = 1
 outline_color = Color( 0.14902, 0.180392, 0.32549, 1 )
 font_data = ExtResource( 2 )
 
-[node name="DesktopIconsSlot" type="Control"]
-margin_right = 250.0
-margin_bottom = 250.0
+[node name="DesktopIconsSlot" type="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 10, 10 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_styles/normal = SubResource( 3 )
+script = ExtResource( 3 )
+_labelPath = NodePath("GridContainer/Label")
+_iconPath = NodePath("GridContainer/TextureRect")
+_selectedEffectPath = NodePath("Panel")
+_applicationData = SubResource( 4 )
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -34,8 +50,8 @@ size_flags_horizontal = 7
 size_flags_vertical = 7
 
 [node name="TextureRect" type="TextureRect" parent="GridContainer"]
-margin_right = 250.0
-margin_bottom = 100.0
+margin_right = 1920.0
+margin_bottom = 508.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
@@ -44,9 +60,9 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="GridContainer"]
-margin_top = 104.0
-margin_right = 250.0
-margin_bottom = 190.0
+margin_top = 512.0
+margin_right = 1920.0
+margin_bottom = 1020.0
 size_flags_horizontal = 7
 size_flags_vertical = 7
 size_flags_stretch_ratio = 0.0

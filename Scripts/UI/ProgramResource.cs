@@ -7,6 +7,7 @@ namespace GlobalGameJam2024.Scripts.UI
         [Export] public string ProgramName;
         [Export] public string WindowTitle;
         [Export] public PackedScene WindowScene;
+        [Export] public PackedScene TaskBarItemScene;
         [Export] public Texture Icon;
     }
 }

@@ -28,11 +28,20 @@ namespace GlobalGameJam2024.Scripts.UI
             {
                 return;
             }
-
+            GD.Print($"Adding {nameof(ITaskBarItem)} {newItem}");
             _tasks[newItem] = newItem;
+            newItem.BindClosedSignal(this, "TryRemoveTaskBarItem");
             ReplaceParent.Replace(newItem.GetTaskIcon(), _taskBarIconContainer);
         }
 
+        private void TryRemoveTaskBarItem(Node potentialTaskBarItem)
+        {
+            if (potentialTaskBarItem is ITaskBarItem taskBarItem)
+            {
+                RemoveTask(taskBarItem);
+            }
+        }
+        
         public void RemoveTask(ITaskBarItem removedItem)
         {
             if (_tasks.Remove(removedItem))

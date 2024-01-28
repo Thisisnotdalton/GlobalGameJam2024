@@ -5,25 +5,37 @@ using Godot;
 
 namespace GlobalGameJam2024.Scripts.UI
 {
-    public class ApplicationIconContainer : Node
+    public class ApplicationIconContainer : Container
     {
         private readonly Dictionary<IApplicationIcon, IApplicationIcon> _applicationIcons =
             new Dictionary<IApplicationIcon, IApplicationIcon>();
 
         [Export] private NodePath _iconContainerPath = new NodePath(".");
         private Container _iconContainer;
-        private IApplicationIcon _selectedIcon = null;
 
-        public override void _Ready()
+        public Container IconContainer
         {
-            base._Ready();
-            _iconContainer = GetNode<Container>(_iconContainerPath);
-            if (_iconContainer == null)
+            get
             {
-                throw new Exception(
-                    $"Failed to get {nameof(Container)} for {nameof(ApplicationIconContainer)} {Name} at path {_iconContainerPath}!");
+                if (_iconContainer == null)
+                {
+                    Node iconContainerNode = GetNode(_iconContainerPath);
+                    if (iconContainerNode is Container applicationIconContainer)
+                    {
+                        _iconContainer = applicationIconContainer;
+                    }
+                    else
+                    {
+                        throw new Exception(
+                            $"Failed to get {nameof(Container)} for {nameof(ApplicationIconContainer)} {Name} at path {_iconContainerPath}!");
+                    }
+                }
+
+                return _iconContainer;
             }
         }
+
+        private IApplicationIcon _selectedIcon = null;
 
         public void AddIcon(IApplicationIcon applicationIcon)
         {
@@ -33,7 +45,7 @@ namespace GlobalGameJam2024.Scripts.UI
             }
 
             _applicationIcons[applicationIcon] = applicationIcon;
-            ReplaceParent.Replace(applicationIcon.GetIcon(), _iconContainer);
+            ReplaceParent.Replace(applicationIcon.GetIcon(), IconContainer);
         }
 
         public void RemoveIcon(IApplicationIcon applicationIcon)
