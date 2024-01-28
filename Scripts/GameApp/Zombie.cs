@@ -41,10 +41,10 @@ public class Zombie : KinematicBody
 			var coll = raycast.GetCollider();
 			if (coll != null && coll is Player colliderNode)
 			{
-				if (colliderNode.Name == "Player")
-				{
+				// if (colliderNode.Name == "Player")
+				// {
 					colliderNode.Kill();
-				}
+				// }
 			}
 		}
 	}

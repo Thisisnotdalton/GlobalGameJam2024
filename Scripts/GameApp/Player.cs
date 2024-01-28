@@ -1,143 +1,153 @@
 using GlobalGameJam2024.Scripts.Core;
 using Godot;
-using System;
-using System.Runtime.CompilerServices;
 
 public class Player : KinematicBody
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = "text";
 
-	private const float MOVE_SPEED = 4f;
-	private const float MOUSE_SENS = 0.5f;
+    private const float MOVE_SPEED = 4f;
+    private const float MOUSE_SENS = 0.5f;
+    [Export] private Resource gameOverStateID = null;
+    private AnimationPlayer animPlayer;
+    private RayCast raycast;
 
-	private AnimationPlayer animPlayer;
-	private RayCast raycast;
+    //[Export]
+    //private NodePath _startButton;
 
-	//[Export]
-	//private NodePath _startButton;
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        ExclusiveStateNode gameState = SearchNodeType.FindParentOfType<ExclusiveStateNode>(this);
+        gameState.Connect("OnStateChanged", this, "InitializePlayer");
+    }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		ExclusiveStateNode gameState = SearchNodeType.FindParentOfType<ExclusiveStateNode>(this);
-		gameState.Connect("OnStateChanged", this, "InitializePlayer");
-	}
-	
-	public void InitializePlayer(bool enabled)
-	{
-		if (!enabled)
-		{
+    public void InitializePlayer(bool enabled)
+    {
+        if (!enabled)
+        {
             PauseManager.Instance.PauseGame(false);
             Input.MouseMode = Input.MouseModeEnum.Visible;
             return;
-		}
-		if (PauseManager.Instance.Connect("GamePaused", this, "ToggleMouseVisibility") != Error.Ok)
-			throw new Exception("Failed to connect PauseUI to PauseManager signal!");
+        }
 
-		animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		raycast = GetNode<RayCast>("RayCast");
+        ConnectSignal.Check(PauseManager.Instance, "GamePaused", this, "ToggleMouseVisibility");
 
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+        animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        raycast = GetNode<RayCast>("RayCast");
 
-		// Equivalent to `yield(get_tree(), "idle_frame")`
-		//GetTree().CreateTimer(0).Connect("timeout", this, nameof(OnIdleFrame));
+        Input.MouseMode = Input.MouseModeEnum.Captured;
 
-		ToSignal(GetTree(), "idle_frame");
-		// Will be called after the idle frame
-		GetTree().CallGroup("zombies", "SetPlayer", this);
-	}
+        // Equivalent to `yield(get_tree(), "idle_frame")`
+        //GetTree().CreateTimer(0).Connect("timeout", this, nameof(OnIdleFrame));
 
-	public void ToggleMouseVisibility(bool isPaused)
-	{
-		if (isPaused)
-		{
-			Input.MouseMode = Input.MouseModeEnum.Visible;
-		}
-		else
-		{
-			Input.MouseMode = Input.MouseModeEnum.Captured;
-		}
-	}
+        ToSignal(GetTree(), "idle_frame");
+        // Will be called after the idle frame
+        GetTree().CallGroup("zombies", "SetPlayer", this);
+    }
 
-	public override void _Input(InputEvent @event)
-	{
-		if (@event is InputEventMouseMotion eventMouseMotion)
-		{
-			RotationDegrees = new Vector3(
-				RotationDegrees.x,
-				RotationDegrees.y - MOUSE_SENS * eventMouseMotion.Relative.x,
-				RotationDegrees.z
-			);
-		}
-	}
+    public void ToggleMouseVisibility(bool isPaused)
+    {
+        if (isPaused)
+        {
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+        }
+        else
+        {
+            Input.MouseMode = Input.MouseModeEnum.Captured;
+        }
+    }
 
-	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(float delta)
-	{
-		//if (Input.IsActionPressed("ui_cancel"))
-		//{
-		//	GetTree().Paused = true;
-		//	//var pauseUI = GetNode<Control>("PauseUI");
-		//	//pauseUI.Show();
-		//}
-		
-		if (Input.IsActionPressed("exit"))
-		{
-			GetTree().Quit();
-		}
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseMotion eventMouseMotion)
+        {
+            RotationDegrees = new Vector3(
+                RotationDegrees.x,
+                RotationDegrees.y - MOUSE_SENS * eventMouseMotion.Relative.x,
+                RotationDegrees.z
+            );
+        }
+    }
 
-		if (Input.IsActionPressed("restart"))
-		{
-			Kill(); // Assuming Kill is a method you've defined elsewhere
-		}
-	}
+    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
+    {
+        //if (Input.IsActionPressed("ui_cancel"))
+        //{
+        //	GetTree().Paused = true;
+        //	//var pauseUI = GetNode<Control>("PauseUI");
+        //	//pauseUI.Show();
+        //}
 
-	public override void _PhysicsProcess(float delta)
-	{
-		Vector3 moveVec = new Vector3();
+        if (Input.IsActionPressed("exit"))
+        {
+            ChangeStateToGameOver();
+        }
 
-		if (Input.IsActionPressed("move_forward"))
-		{
-			moveVec.z -= 1;
-		}
-		if (Input.IsActionPressed("move_back"))
-		{
-			moveVec.z += 1;
-		}
-		if (Input.IsActionPressed("move_left"))
-		{
-			moveVec.x -= 1;
-		}
-		if (Input.IsActionPressed("move_right"))
-		{
-			moveVec.x += 1;
-		}
+        if (Input.IsActionPressed("restart"))
+        {
+            Kill(); // Assuming Kill is a method you've defined elsewhere
+        }
+    }
 
-		moveVec = moveVec.Normalized();
-		moveVec = moveVec.Rotated(new Vector3(0, 1, 0), Rotation.y);
-		MoveAndCollide(moveVec * MOVE_SPEED * delta);
+    public override void _PhysicsProcess(float delta)
+    {
+        Vector3 moveVec = new Vector3();
 
-		if (Input.IsActionPressed("shoot") && !animPlayer.IsPlaying())
-		{
-			animPlayer.Play("shoot");
-			if (raycast.IsColliding())
-			{
-				var coll = raycast.GetCollider();
-				if (coll != null && coll is Zombie colliderNode)
-				{
-					colliderNode.Kill();
-				}
-			}
-		}
+        if (Input.IsActionPressed("move_forward"))
+        {
+            moveVec.z -= 1;
+        }
 
-		//base._PhysicsProcess(delta);
-	}
+        if (Input.IsActionPressed("move_back"))
+        {
+            moveVec.z += 1;
+        }
 
-	public void Kill()
-	{
+        if (Input.IsActionPressed("move_left"))
+        {
+            moveVec.x -= 1;
+        }
+
+        if (Input.IsActionPressed("move_right"))
+        {
+            moveVec.x += 1;
+        }
+
+        moveVec = moveVec.Normalized();
+        moveVec = moveVec.Rotated(new Vector3(0, 1, 0), Rotation.y);
+        MoveAndCollide(moveVec * MOVE_SPEED * delta);
+
+        if (Input.IsActionPressed("shoot") && !animPlayer.IsPlaying())
+        {
+            animPlayer.Play("shoot");
+            if (raycast.IsColliding())
+            {
+                var coll = raycast.GetCollider();
+                if (coll != null && coll is Zombie colliderNode)
+                {
+                    colliderNode.Kill();
+                }
+            }
+        }
+
+        //base._PhysicsProcess(delta);
+    }
+
+    public void Kill()
+    {
         Input.MouseMode = Input.MouseModeEnum.Visible;
-        GetTree().ReloadCurrentScene();
-	}
+        ChangeStateToGameOver();
+    }
+
+    private void ChangeStateToGameOver()
+    {
+        ExclusiveStateNodeManager manager = SearchNodeType.FindParentOfType<ExclusiveStateNodeManager>(this);
+        if (manager != null)
+        {
+            manager.ChangeState(gameOverStateID);
+        }
+    }
 }

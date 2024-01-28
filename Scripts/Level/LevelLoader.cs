@@ -44,22 +44,24 @@ namespace GlobalGameJam2024.Scripts.Level
         public void LoadLevel(PackedScene level)
         {
             UnloadCurrentLevel();
+            LoadNextLevel(level);
+        }
+        
+        private void LoadNextLevel(PackedScene level){
             _loadedLevel = level.Instance();
             AddChild(_loadedLevel);
-            _player = _playerScene.Instance();
-            AddChild(_player);
-            if (_player is PlatformerCharacter platformerCharacter)
+            if (_playerScene != null)
             {
-                platformerCharacter.ResetToSpawnPoint(GetDefaultSpawnPoint(_loadedLevel));
-            }
-            else
-            {
-                throw new Exception(
-                    $"Player scene {_playerScene} does not instantiate a {nameof(PlatformerCharacter)}!");
+                _player = _playerScene.Instance();
+                AddChild(_player);
+                if (_player is PlatformerCharacter platformerCharacter)
+                {
+                    platformerCharacter.ResetToSpawnPoint(GetDefaultSpawnPoint(_loadedLevel));
+                }
             }
         }
 
-        private void LoadDefaultLevel()
+        public void LoadDefaultLevel()
         {
             if (_defaultLevel != null)
             {
