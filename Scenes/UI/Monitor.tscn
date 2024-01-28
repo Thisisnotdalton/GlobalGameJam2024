@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scripts/UI/TaskBar.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/UI/WindowContainer.cs" type="Script" id=2]
@@ -26,6 +26,10 @@
 [ext_resource path="res://Scripts/GameObstacles/GameObstacleLock.cs" type="Script" id=24]
 [ext_resource path="res://Assets/ProgramData/None.tres" type="Resource" id=25]
 [ext_resource path="res://Assets/ProgramData/Gloom.tres" type="Resource" id=26]
+[ext_resource path="res://Assets/ProgramData/LOLYouCan.tres" type="Resource" id=27]
+[ext_resource path="res://Assets/ProgramData/MyCuteDocs.tres" type="Resource" id=28]
+[ext_resource path="res://Assets/ProgramData/Homework.tres" type="Resource" id=29]
+[ext_resource path="res://Assets/ProgramData/Authentic.tres" type="Resource" id=30]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.62, 0.6076, 0.6076, 1 )
@@ -207,6 +211,7 @@ anchor_bottom = 0.0
 margin_left = 585.0
 margin_right = 776.0
 margin_bottom = 291.0
+_applicationData = ExtResource( 28 )
 
 [node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Folder_Full_2/GridContainer" index="0"]
 margin_right = 191.0
@@ -221,21 +226,21 @@ text = "My Doc cute ments
 Uwu"
 autowrap = true
 
-[node name="DesktopIconsSlot6" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot1" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 780.0
 margin_right = 971.0
 margin_bottom = 291.0
 
-[node name="DesktopIconsSlot7" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot2" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 975.0
 margin_right = 1166.0
 margin_bottom = 291.0
 
-[node name="EmptyDesktopSlot" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot3" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1170.0
@@ -328,7 +333,7 @@ _applicationIconPath = NodePath("..")
 script = ExtResource( 24 )
 _requiredSatisfied = ExtResource( 22 )
 
-[node name="DesktopIconsSlot9" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot4" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 390.0
@@ -336,7 +341,7 @@ margin_top = 295.0
 margin_right = 581.0
 margin_bottom = 585.0
 
-[node name="DesktopIconsSlot24" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot5" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 585.0
@@ -344,7 +349,7 @@ margin_top = 295.0
 margin_right = 776.0
 margin_bottom = 585.0
 
-[node name="DesktopIconsSlot12" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot6" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 780.0
@@ -359,6 +364,7 @@ margin_left = 975.0
 margin_top = 295.0
 margin_right = 1166.0
 margin_bottom = 585.0
+_applicationData = ExtResource( 29 )
 
 [node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Folder_Empty2/GridContainer" index="0"]
 margin_right = 191.0
@@ -371,7 +377,7 @@ margin_right = 191.0
 margin_bottom = 230.0
 text = "homework"
 
-[node name="DesktopIconsSlot13" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot7" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1170.0
@@ -379,7 +385,7 @@ margin_top = 295.0
 margin_right = 1361.0
 margin_bottom = 585.0
 
-[node name="DesktopIconsSlot14" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot8" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1365.0
@@ -387,7 +393,7 @@ margin_top = 295.0
 margin_right = 1556.0
 margin_bottom = 585.0
 
-[node name="DesktopIconsSlot15" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot9" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1560.0
@@ -401,6 +407,7 @@ anchor_bottom = 0.0
 margin_top = 589.0
 margin_right = 191.0
 margin_bottom = 879.0
+_applicationData = ExtResource( 27 )
 
 [node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Folder_Full_1/GridContainer" index="0"]
 margin_right = 191.0
@@ -422,7 +429,7 @@ margin_top = 589.0
 margin_right = 386.0
 margin_bottom = 879.0
 
-[node name="DesktopIconsSlot18" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot10" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 390.0
@@ -430,7 +437,7 @@ margin_top = 589.0
 margin_right = 581.0
 margin_bottom = 879.0
 
-[node name="DesktopIconsSlot21" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot11" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 585.0
@@ -438,7 +445,7 @@ margin_top = 589.0
 margin_right = 776.0
 margin_bottom = 879.0
 
-[node name="DesktopIconsSlot23" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot12" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 780.0
@@ -446,7 +453,7 @@ margin_top = 589.0
 margin_right = 971.0
 margin_bottom = 879.0
 
-[node name="DesktopIconsSlot25" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot13" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 975.0
@@ -454,7 +461,7 @@ margin_top = 589.0
 margin_right = 1166.0
 margin_bottom = 879.0
 
-[node name="DesktopIconsSlot26" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot14" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1170.0
@@ -462,7 +469,7 @@ margin_top = 589.0
 margin_right = 1361.0
 margin_bottom = 879.0
 
-[node name="DesktopIconsSlot28" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
+[node name="EmptyDesktopSlot15" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer" instance=ExtResource( 8 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1365.0
@@ -477,6 +484,7 @@ margin_left = 1560.0
 margin_top = 589.0
 margin_right = 1750.0
 margin_bottom = 879.0
+_applicationData = ExtResource( 30 )
 
 [node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/ApplicationIconContainer/Icon_Auth/GridContainer" index="0"]
 margin_right = 190.0

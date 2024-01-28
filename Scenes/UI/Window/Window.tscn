@@ -12,6 +12,11 @@ script = ExtResource( 1 )
 _transitionTime = 0.125
 _windowLabelPath = NodePath("VBoxContainer/Header/MarginContainer/HBoxContainer/Title/Label")
 
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -154,11 +159,18 @@ size_flags_horizontal = 9
 size_flags_vertical = 3
 size_flags_stretch_ratio = 9.0
 
-[node name="Background" type="Panel" parent="VBoxContainer/Body"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Body"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 3 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
 
-[node name="Control" type="Control" parent="VBoxContainer/Body"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Control" type="Control" parent="VBoxContainer/Body/MarginContainer"]
+margin_right = 1900.0
+margin_bottom = 949.0
+size_flags_horizontal = 7
+size_flags_vertical = 7

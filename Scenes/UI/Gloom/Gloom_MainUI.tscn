@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/Core/ExclusiveStateNode.cs" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/StateIdentifiers/GloomGameState.tres" type="Resource" id=5]
 [ext_resource path="res://Assets/StateIdentifiers/MainMenuState.tres" type="Resource" id=6]
 [ext_resource path="res://Assets/GameApp/icon_Gloom.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/UI/WindowButton.cs" type="Script" id=8]
 
 [node name="Gloom_MainUI" type="Control"]
 anchor_right = 1.0
@@ -93,6 +94,7 @@ margin_right = 956.0
 margin_bottom = 43.0
 theme = ExtResource( 3 )
 text = "Exit"
+script = ExtResource( 8 )
 
 [node name="BottomSpacer" type="Control" parent="HBoxContainer/VBoxContainer"]
 margin_top = 812.0
