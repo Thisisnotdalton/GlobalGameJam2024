@@ -84,6 +84,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
 
+[node name="DesktopIcons" type="Control" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="TaskBar" type="Control" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer"]
 margin_top = 756.0
 margin_right = 840.0

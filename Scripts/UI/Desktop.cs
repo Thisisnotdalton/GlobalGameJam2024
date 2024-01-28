@@ -40,5 +40,9 @@ namespace GlobalGameJam2024.Scripts.UI
                 window.ChangeWindowState(WindowState.Closed);
             }
         }
+
+        public void OnWindowStateChanged(IWindow window)
+        {
+        }
     }
 }

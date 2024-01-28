@@ -24,6 +24,11 @@ namespace GlobalGameJam2024.Scripts.UI
             set => ChangeWindowState(value);
         }
 
+        public WindowState GetState()
+        {
+            return State;
+        }
+
         public string Title { get; set; }
 
         [Signal]
