@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/UI/Window.tres" type="Theme" id=1]
 [ext_resource path="res://Assets/UI/WindowHeaderBar.tres" type="Theme" id=2]
-[ext_resource path="res://Assets/UI_Art/icon_amigosoft.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI_Art/bg_loading.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/UI/Window.cs" type="Script" id=4]
 [ext_resource path="res://Scripts/UI/WindowButton.cs" type="Script" id=5]
 
@@ -62,7 +62,7 @@ grow_vertical = 2
 size_flags_horizontal = 15
 size_flags_vertical = 15
 theme = ExtResource( 2 )
-text = "Window Title"
+text = "Amigosoft"
 valign = 1
 clip_text = true
 
@@ -169,4 +169,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 6
+stretch_mode = 4

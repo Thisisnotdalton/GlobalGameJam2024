@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/UI/Window/AppWindows/SaberNight.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/Window/AppWindows/MyDocuments.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/UI/ProgramResource.cs" type="Script" id=2]
-[ext_resource path="res://Assets/UI_Art/icon_game.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI_Art/icon_folder.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/UI/TaskBarIcon.tscn" type="PackedScene" id=4]
 
 [resource]
 script = ExtResource( 2 )
-ProgramName = "Saber: Night Symphony"
-WindowTitle = "Saber: Night Symphony"
+ProgramName = "My Doc Cute Ments UWU"
+WindowTitle = "My Doc Cute Ments UWU"
 WindowScene = ExtResource( 1 )
 TaskBarItemScene = ExtResource( 4 )
 Icon = ExtResource( 3 )
