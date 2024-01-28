@@ -105,7 +105,7 @@ namespace GlobalGameJam2024.Scripts.Core
                 if (node == null)
                 {
                     throw new Exception(
-                        $"No valid state could be found with identifier {ExclusiveStateNode.GetStateIDForResource(stateIdentifier)}");
+                        $"No valid state could be found for {Name} {this.GetPath()} with identifier {ExclusiveStateNode.GetStateIDForResource(stateIdentifier)}");
                 }
                 GD.Print(
                     $"{Name} is changing to state {node.GetStateDisplayName()}");

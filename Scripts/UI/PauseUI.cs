@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using GlobalGameJam2024.Scripts.Core;
 using Godot;
 

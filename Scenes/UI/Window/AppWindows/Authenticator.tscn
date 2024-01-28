@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/UI/Window/Window.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Core/ExclusiveStateNodeManager.cs" type="Script" id=2]
 [ext_resource path="res://Assets/UI_Art/bg_auth.png" type="Texture" id=5]
 
 [node name="Window" instance=ExtResource( 1 )]
@@ -11,3 +12,6 @@ anchor_bottom = 1.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 1
+
+[node name="Control" type="Node" parent="VBoxContainer/Body/MarginContainer/Control" index="1"]
+script = ExtResource( 2 )

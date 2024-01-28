@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/UI/TaskBar.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/UI/WindowContainer.cs" type="Script" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://Assets/ProgramData/MyCuteDocs.tres" type="Resource" id=28]
 [ext_resource path="res://Assets/ProgramData/Homework.tres" type="Resource" id=29]
 [ext_resource path="res://Assets/ProgramData/Authentic.tres" type="Resource" id=30]
+[ext_resource path="res://Assets/StateIdentifiers/PauseMenuState.tres" type="Resource" id=31]
+[ext_resource path="res://Scripts/UI/StateChangeButton.cs" type="Script" id=32]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.62, 0.6076, 0.6076, 1 )
@@ -530,6 +532,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 icon_align = 1
+script = ExtResource( 32 )
+_targetStateIdentifier = ExtResource( 31 )
 
 [node name="Label" type="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/HBoxContainer/StartButton"]
 anchor_left = 0.4
