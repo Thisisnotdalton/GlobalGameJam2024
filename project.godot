@@ -12,7 +12,8 @@ config_version=4
 
 config/name="Global Game Jam 2024"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Assets/UI_Art/icon_steamwillie.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
