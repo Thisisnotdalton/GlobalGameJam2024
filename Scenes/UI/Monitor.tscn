@@ -1,8 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/UI/TaskBar.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/UI/Desktop.cs" type="Script" id=2]
 [ext_resource path="res://Assets/UI/StartMenu.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/UI_Art/bg_desktop.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI_Art/2024_GGJ_GHEEMAIL_GMAIL.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI_Art/icon_MFA.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI_Art/icon_game.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/UI/DesktopIconsSlot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/UI_Art/icon_amigosoft.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI_Art/icon_folder_full.png" type="Texture" id=10]
+[ext_resource path="res://Assets/UI_Art/icon_folder.png" type="Texture" id=11]
+[ext_resource path="res://Assets/UI_Art/icon_steamwillie.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI_Art/bg_monitoroutline.png" type="Texture" id=13]
+[ext_resource path="res://Assets/UI_Art/icon_volume_on_1.png" type="Texture" id=14]
+[ext_resource path="res://Assets/UI_Art/icon_pause_1.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.62, 0.6076, 0.6076, 1 )
@@ -36,17 +48,17 @@ size_flags_vertical = 3
 [node name="Panel" type="Panel" parent="AspectRatioContainer/MonitorBezel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -415.0
+margin_right = 413.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="Screen" type="Control" parent="AspectRatioContainer/MonitorBezel/Panel"]
-anchor_left = 0.125
-anchor_top = 0.125
-anchor_right = 0.875
-anchor_bottom = 0.875
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 42.0
+margin_top = 44.0
+margin_right = -36.0
+margin_bottom = -45.0
 
 [node name="MonitorBackground" type="Panel" parent="AspectRatioContainer/MonitorBezel/Panel/Screen"]
 anchor_right = 1.0
@@ -68,12 +80,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer"]
-margin_right = 840.0
-margin_bottom = 840.0
+margin_right = 1820.0
+margin_bottom = 981.0
 
 [node name="Desktop" type="Control" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer"]
-margin_right = 840.0
-margin_bottom = 752.0
+margin_right = 1820.0
+margin_bottom = 879.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 9.0
@@ -84,20 +96,305 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
 
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/GridContainer"]
+margin_right = 1820.0
+margin_bottom = 879.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 4 )
+expand = true
+
 [node name="DesktopIcons" type="Control" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons"]
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 40.0
+margin_right = -30.0
+
+[node name="GridContainer" type="GridContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer"]
+margin_right = 1750.0
+margin_bottom = 879.0
+columns = 9
+
+[node name="Icon_GheeMail" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_right = 191.0
+margin_bottom = 291.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_GheeMail/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 114.0
+texture = ExtResource( 5 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_GheeMail/GridContainer" index="1"]
+margin_top = 118.0
+margin_right = 191.0
+margin_bottom = 231.0
+text = "GheeMail"
+
+[node name="Icon_SteamWillie" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 195.0
+margin_right = 386.0
+margin_bottom = 291.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_SteamWillie/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 114.0
+texture = ExtResource( 12 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_SteamWillie/GridContainer" index="1"]
+margin_top = 118.0
+margin_right = 191.0
+margin_bottom = 231.0
+text = "Steam Willie"
+
+[node name="DesktopIconsSlot5" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 390.0
+margin_right = 581.0
+margin_bottom = 291.0
+
+[node name="Icon_Folder_Full_2" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 585.0
+margin_right = 776.0
+margin_bottom = 291.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Full_2/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 114.0
+texture = ExtResource( 10 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Full_2/GridContainer" index="1"]
+margin_top = 118.0
+margin_right = 191.0
+margin_bottom = 231.0
+text = "My Doc cute ments 
+Uwu"
+autowrap = true
+
+[node name="DesktopIconsSlot6" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 780.0
+margin_right = 971.0
+margin_bottom = 291.0
+
+[node name="DesktopIconsSlot7" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 975.0
+margin_right = 1166.0
+margin_bottom = 291.0
+
+[node name="DesktopIconsSlot11" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1170.0
+margin_right = 1361.0
+margin_bottom = 291.0
+
+[node name="Icon_Volume" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1365.0
+margin_right = 1556.0
+margin_bottom = 291.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Volume/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 114.0
+texture = ExtResource( 14 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Volume/GridContainer" index="1"]
+margin_top = 118.0
+margin_right = 191.0
+margin_bottom = 231.0
+
+[node name="Icon_Pause" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1560.0
+margin_right = 1750.0
+margin_bottom = 291.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Pause/GridContainer" index="0"]
+margin_right = 190.0
+margin_bottom = 114.0
+texture = ExtResource( 15 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Pause/GridContainer" index="1"]
+margin_top = 118.0
+margin_right = 190.0
+margin_bottom = 231.0
+
+[node name="Icon_Amigosoft" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_top = 295.0
+margin_right = 191.0
+margin_bottom = 585.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Amigosoft/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 113.0
+texture = ExtResource( 9 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Amigosoft/GridContainer" index="1"]
+margin_top = 117.0
+margin_right = 191.0
+margin_bottom = 230.0
+text = "Amigosoft"
+
+[node name="Icon_Game" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 195.0
+margin_top = 295.0
+margin_right = 386.0
+margin_bottom = 585.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Game/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 113.0
+texture = ExtResource( 7 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Game/GridContainer" index="1"]
+margin_top = 117.0
+margin_right = 191.0
+margin_bottom = 230.0
+text = "Saber: 
+Night 
+Symphony"
+autowrap = true
+
+[node name="DesktopIconsSlot9" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 390.0
+margin_top = 295.0
+margin_right = 581.0
+margin_bottom = 585.0
+
+[node name="DesktopIconsSlot24" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 585.0
+margin_top = 295.0
+margin_right = 776.0
+margin_bottom = 585.0
+
+[node name="DesktopIconsSlot12" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 780.0
+margin_top = 295.0
+margin_right = 971.0
+margin_bottom = 585.0
+
+[node name="Icon_Folder_Empty2" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 975.0
+margin_top = 295.0
+margin_right = 1166.0
+margin_bottom = 585.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Empty2/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 113.0
+texture = ExtResource( 11 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Empty2/GridContainer" index="1"]
+margin_top = 117.0
+margin_right = 191.0
+margin_bottom = 230.0
+text = "homework"
+
+[node name="DesktopIconsSlot13" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1170.0
+margin_top = 295.0
+margin_right = 1361.0
+margin_bottom = 585.0
+
+[node name="DesktopIconsSlot14" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1365.0
+margin_top = 295.0
+margin_right = 1556.0
+margin_bottom = 585.0
+
+[node name="DesktopIconsSlot15" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1560.0
+margin_top = 295.0
+margin_right = 1750.0
+margin_bottom = 585.0
+
+[node name="Icon_Folder_Full_1" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_top = 589.0
+margin_right = 191.0
+margin_bottom = 879.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Full_1/GridContainer" index="0"]
+margin_right = 191.0
+margin_bottom = 113.0
+texture = ExtResource( 10 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Full_1/GridContainer" index="1"]
+margin_top = 117.0
+margin_right = 191.0
+margin_bottom = 230.0
+text = "lol You can't open this"
+autowrap = true
+
+[node name="DesktopIconsSlot16" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 195.0
+margin_top = 589.0
+margin_right = 386.0
+margin_bottom = 879.0
+
+[node name="DesktopIconsSlot18" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 390.0
+margin_top = 589.0
+margin_right = 581.0
+margin_bottom = 879.0
+
+[node name="DesktopIconsSlot21" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 585.0
+margin_top = 589.0
+margin_right = 776.0
+margin_bottom = 879.0
+
+[node name="DesktopIconsSlot23" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 780.0
+margin_top = 589.0
+margin_right = 971.0
+margin_bottom = 879.0
+
+[node name="DesktopIconsSlot25" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 975.0
+margin_top = 589.0
+margin_right = 1166.0
+margin_bottom = 879.0
+
+[node name="DesktopIconsSlot26" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1170.0
+margin_top = 589.0
+margin_right = 1361.0
+margin_bottom = 879.0
+
+[node name="DesktopIconsSlot28" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1365.0
+margin_top = 589.0
+margin_right = 1556.0
+margin_bottom = 879.0
+
+[node name="Icon_Auth" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 1560.0
+margin_top = 589.0
+margin_right = 1750.0
+margin_bottom = 879.0
+
+[node name="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Auth/GridContainer" index="0"]
+margin_right = 190.0
+margin_bottom = 113.0
+texture = ExtResource( 6 )
+
+[node name="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Auth/GridContainer" index="1"]
+margin_top = 117.0
+margin_right = 190.0
+margin_bottom = 230.0
+text = "Authentic"
 
 [node name="TaskBar" type="Control" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer"]
-margin_top = 756.0
-margin_right = 840.0
-margin_bottom = 840.0
+margin_top = 883.0
+margin_right = 1820.0
+margin_bottom = 981.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -109,17 +406,32 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 3 )
 
+[node name="Time" type="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/TaskBarBackground"]
+margin_left = 1636.0
+margin_top = 1.0
+margin_right = 1819.0
+margin_bottom = 95.0
+theme = ExtResource( 3 )
+text = "it's Noon-thirty
+tryna sleep here"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="StartButton" type="Button" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/HBoxContainer"]
-margin_right = 83.0
-margin_bottom = 84.0
+margin_right = 181.0
+margin_bottom = 98.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 3 )
+icon_align = 1
 
 [node name="Label" type="Label" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/HBoxContainer/StartButton"]
+anchor_left = 0.4
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
@@ -127,10 +439,45 @@ text = "Start"
 align = 1
 valign = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/HBoxContainer/StartButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -80.0
+margin_bottom = -10.0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/HBoxContainer/StartButton/MarginContainer"]
+margin_right = 91.0
+margin_bottom = 78.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/TaskBar/HBoxContainer"]
-margin_left = 87.0
-margin_right = 840.0
-margin_bottom = 84.0
+margin_left = 185.0
+margin_right = 1820.0
+margin_bottom = 98.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 9.0
+
+[node name="Monitor Outline" type="TextureRect" parent="AspectRatioContainer/MonitorBezel"]
+anchor_right = 1.412
+anchor_bottom = 1.0
+margin_left = -417.0
+margin_top = 3.0
+margin_right = -26.96
+texture = ExtResource( 13 )
+expand = true
+
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_GheeMail"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_SteamWillie"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Full_2"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Volume"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Pause"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Amigosoft"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Game"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Empty2"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Folder_Full_1"]
+[editable path="AspectRatioContainer/MonitorBezel/Panel/Screen/ScreenContent/MarginContainer/VBoxContainer/Desktop/DesktopIcons/MarginContainer/GridContainer/Icon_Auth"]
