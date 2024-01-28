@@ -23,6 +23,14 @@ margin_right = 1924.0
 margin_bottom = 1080.0
 texture = ExtResource( 9 )
 
+[node name="CPUParticles2D" parent="." instance=ExtResource( 10 )]
+amount = 300
+emission_shape = 2
+emission_rect_extents = Vector2( 1920, 1080 )
+gravity = Vector2( 0, -100 )
+scale_amount = 5.0
+scale_amount_random = 1.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -133,5 +141,3 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
-
-[node name="CPUParticles2D" parent="." instance=ExtResource( 10 )]
