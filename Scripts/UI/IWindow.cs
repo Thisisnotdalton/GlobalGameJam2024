@@ -6,5 +6,6 @@ namespace GlobalGameJam2024.Scripts.UI
     {
         void ChangeWindowState(WindowState windowState);
         Control GetWindow();
+        WindowState GetState();
     }
 }
